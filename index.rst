@@ -1,18 +1,14 @@
-.. title:: Nutanix Enterprise Private Cloud Bootcamp
+.. title:: Nutanix Flow Bootcamp
 
 .. toctree::
    :maxdepth: 2
-   :caption: Enterprise Private Cloud
-   :name: _enterprise_privatecloud
+   :caption: Flow
+   :name: _flow
    :hidden:
 
-   dayinlife/dayinlife
-   prismops/prismops_capacity_lab/prismops_capacity_lab
-   prismops/prismops_rightsize_lab/prismops_rightsize_lab
-   security/security
-   files/files
+   labsetup/labsetup
    flow_secure_fiesta/flow_secure_fiesta
-..   beam_cost_governance/beam_cost_governance
+   beam_security_compliance/beam_security_compliance
 
 .. toctree::
   :maxdepth: 2
@@ -20,8 +16,7 @@
   :name: _optional_labs
   :hidden:
 
-  image_create/image_create
-.. lab_image_configuration/lab_image_configuration
+
 
 .. toctree::
   :maxdepth: 2
@@ -49,7 +44,7 @@ What's New
 ++++++++++
 
 - Workshop updated for the following software versions:
-    - AOS 5.11.x | 5.15.x | 5.16.x | 5.17.x 
+    - AOS 5.11.x | 5.15.x | 5.16.x | 5.17.x
     - PC 5.17.0.3
 
 - Optional Lab Updates:
