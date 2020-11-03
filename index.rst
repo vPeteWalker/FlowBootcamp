@@ -9,6 +9,7 @@
    labsetup/labsetup
    flow_secure_fiesta/flow_secure_fiesta
    beam_security_compliance/beam_security_compliance
+   flow_next/flow_next
 
 .. toctree::
   :maxdepth: 2
