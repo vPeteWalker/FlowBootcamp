@@ -10,7 +10,7 @@ Calm Lab Setup
 Configuring a Project
 +++++++++++++++++++++
 
-In this lab you will leverage multiple pre-built Calm Blueprints to provision your applications...
+In this lab you will leverage multiple pre-built Calm blueprints to provision your applications.
 
 #. In **Prism Central**, select :fa:`bars` **> Services > Calm**.\
 

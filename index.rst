@@ -6,7 +6,7 @@
    :name: _flow
    :hidden:
 
-   labsetup/labsetup
+   .. labsetup/labsetup
    flow_secure_fiesta/flow_secure_fiesta
    beam_security_compliance/beam_security_compliance
    flow_next/flow_next
@@ -37,21 +37,27 @@
 Getting Started
 ---------------
 
-Welcome to the Nutanix Enterprise Private Cloud Bootcamp! This workbook accompanies an instructor-led session that introduces Nutanix Core technologies and many common management tasks.
+Welcome to the Nutanix Enterprise Private Cloud bootcamp. This workbook accompanies an instructor-led session that introduces Nutanix core technologies, and many common management tasks.
 
-You will explore Prism Central and become familiar with its features and navigation. You will use Prism to perform basic cluster administration tasks, including storage and networking. You will also walk through basic VM deployment and management tasks with Prism and AHV. Finally, you will explore VM data protection, including snapshots and replication. The instructor explains the exercises and answers any additional questions that you may have.
+You will explore:
 
-At the end of the bootcamp, attendees should understand the Core concepts and technologies that make up the Nutanix Enterprise Cloud stack and should be well prepared for a hosted or onsite proof-of-concept (POC) engagement.
+   - Prism Central - Become familiar with its features and navigation.
+   - Prism - Perform basic cluster administration tasks, including storage and networking.
+   - Walk through basic VM deployment and management tasks.
+   - VM data protection, including snapshots and replication.
+
+The instructor explains the exercises, and answers any additional questions that you may have.
+
+At the end of the bootcamp, attendees should understand the core concepts and technologies that make up the Nutanix Enterprise Cloud stack, and should be well prepared for a proof-of-concept (POC) engagement.
 
 What's New
 ++++++++++
 
 - Workshop updated for the following software versions:
-    - AOS 5.15.x | 5.16.x | 5.17.x | 5.18.x
-    - Prism 2020.8
+    - AOS 5.19.2
+    - Prism 2021.3.0.1
 
-- Optional Lab Updates:
-
+.. - Optional Lab Updates:
 
 Agenda
 ++++++
@@ -81,13 +87,14 @@ Cluster assignment
 
 The instructor will tell the attendees their assigned clusters.
 
-.. note::
-  If these are Single Node Clusters (SNCs) pay close attention on the networking part. The SNCs are completely different setup and configured compared to the "normal" three/four node clusters
+   .. note::
+
+      If these are Single-Node Clusters (SNCs) pay close attention on the networking portion. The SNCs are configured differently compared to three- or four-node clusters.
 
 Environment Details
 +++++++++++++++++++
 
-Nutanix Workshops are intended to be run in the Nutanix Hosted POC environment. Your cluster will be provisioned with all necessary images, networks, and VMs required to complete the exercises.
+Nutanix bootcamps are intended to be run in the Nutanix Hosted POC (HPOC) environment. Your cluster will be provisioned with all necessary images, networks, and VMs required to complete the exercises.
 
 Networking
 ..........
@@ -97,7 +104,7 @@ As we are able to provide three/four node clusters and single node clusters in t
 Three/Four node HPOC clusters
 -----------------------------
 
-Three or four node Hosted POC clusters follow a standard naming convention:
+Three- or four-node Hosted POC clusters follow a standard naming convention:
 
 - **Cluster Name** - POC\ *XYZ*
 - **Subnet** - 10.\ **21**\ .\ *XYZ*\ .0
@@ -110,7 +117,7 @@ For example:
 - **Cluster IP** - 10.21.55.37 for the VIP of the Cluster
 
 
-Throughout the Workshop there are multiple instances where you will need to substitute *XYZ* with the correct octet for your subnet, for example:
+Throughout the bootcamp, there are multiple instances where you will need to substitute *XYZ* with the correct octet for your subnet, for example:
 
 .. list-table::
   :widths: 25 75
@@ -123,7 +130,7 @@ Throughout the Workshop there are multiple instances where you will need to subs
   * - 10.38.\ *XYZ*\ .39
     - **PC** VM IP, Prism Central
   * - 10.38.\ *XYZ*\ .41
-    - **DC** VM IP, NTNXLAB.local Domain Controller
+    - **AutoAD** VM IP, NTNXLAB.local Domain Controller
 
 Each cluster is configured with 2 VLANs which can be used for VMs:
 
@@ -147,9 +154,9 @@ Each cluster is configured with 2 VLANs which can be used for VMs:
 Single Node HPOC Clusters
 -------------------------
 
-For some workshops we are using Single Node Clusters (SNC). The reason for this is to allow more people to have a dedicated cluster but still have enough free clusters for the bigger workshops including those for customers.
+For some bootcamps, we are using Single Node Clusters (SNC). The reason for this is to allow more people to have a dedicated cluster but still have enough free clusters for the larger bootcamps, including those for customers.
 
-The network in the SNC config is using a /26 network. This splits the network address into four equal sizes that can be used for workshops. The below table describes the setup of the network in the four partitions. It provides essential information for the workshop with respect to the IP addresses and the services running at that IP address.
+The network in the SNC config is using a /26 network prefix length. This splits the network address into four equal sizes that can be used for bootcamps. The below table describes the setup of the network in the four partitions. It provides essential information for the bootcamp with respect to the IP addresses and the services running at that IP address.
 
 .. list-table::
   :widths: 15 15 15 15 40
@@ -201,7 +208,7 @@ The network in the SNC config is using a /26 network. This splits the network ad
     - 10.38.x.75
     - 10.38.x.139
     - 10.38.x.203
-    - AutoDC IP(DC)
+    - AutoAD IP(DC)
     -
   * - 10.38.x.32-37
     - 10.38.x.96-101
@@ -222,7 +229,7 @@ Credentials
 
 .. note::
 
-  The *<Cluster Password>* is unique to each cluster and will be provided by the leader of the Workshop.
+  The *<CLUSTER-PASSWORD>* is unique to each cluster and will be provided by the leader of the Workshop.
 
 .. list-table::
   :widths: 25 35 40
@@ -233,18 +240,18 @@ Credentials
     - Password
   * - Prism Element
     - admin
-    - *<Cluster Password>*
+    - *<CLUSTER-PASSWORD>*
   * - Prism Central
     - admin
-    - *<Cluster Password>*
+    - *<CLUSTER-PASSWORD>*
   * - Controller VM
     - nutanix
-    - *<Cluster Password>*
+    - *<CLUSTER-PASSWORD>*
   * - Prism Central VM
     - nutanix
-    - *<Cluster Password>*
+    - *<CLUSTER-PASSWORD>*
 
-Each cluster has a dedicated domain controller VM, **DC**, responsible for providing AD services for the **NTNXLAB.local** domain. The domain is populated with the following Users and Groups:
+Each cluster has a dedicated domain controller VM responsible for providing Microsoft Active Directory (AD) services for the **NTNXLAB.local** domain. The domain is populated with the following users and groups:
 
 .. list-table::
   :widths: 25 35 40
@@ -272,22 +279,25 @@ Each cluster has a dedicated domain controller VM, **DC**, responsible for provi
 Access Instructions
 +++++++++++++++++++
 
-The Nutanix Hosted POC environment can be accessed a number of different ways:
+The Nutanix Hosted POC environment can be accessed several ways:
 
 Parallels VDI
-.................
+.............
 
-Login to: https://xld-uswest1.nutanix.com (for PHX) or https://xld-useast1.nutanix.com (for RTP)
+Login to:
+
+   - `https://xld-uswest1.nutanix.com` (for PHX)
+   - `https://xld-useast1.nutanix.com` (for RTP)
 
 **Nutanix Employees** - Use your NUTANIXDC credentials
 **Non-Employees** - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
 
 Pulse Secure VPN
-..........................
+................
 
-To download the client: login to https://xlv-uswest1.nutanix.com or https://xlv-useast1.nutanix.com - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
+Download the client:
 
-Download and install the client.
+   - Log in to `https://xlv-uswest1.nutanix.com` or `https://xlv-useast1.nutanix.com` - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
 
 In Pulse Secure Client, **Add** a connection:
 
@@ -302,11 +312,3 @@ For RTP:
 - **Type** - Policy Secure (UAC) or Connection Server
 - **Name** - X-Labs - RTP
 - **Server URL** - xlv-useast1.nutanix.com
-
-
-Nutanix Version Info
-++++++++++++++++++++
-
-- **AHV Version** - AHV 20170830.337 (AOS 5.11+)
-- **AOS Version** - 5.15.x | 5.16.x | 5.17.x | 5.18.x
-- **PC Version** - Prism 2020.8
